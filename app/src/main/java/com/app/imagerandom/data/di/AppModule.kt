@@ -3,6 +3,9 @@ package com.app.imagerandom.data.di
 import android.content.Context
 import com.app.imagerandom.data.repository.AppThemeRepository
 import com.app.imagerandom.data.repository.AppThemeRepositoryImpl
+import com.app.imagerandom.data.repository.ImageRandomRepository
+import com.app.imagerandom.data.repository.ImageRandomRepositoryImpl
+import com.app.imagerandom.domain.usecase.GetListImageRandomUseCase
 import com.app.imagerandom.domain.usecase.theme.GetThemeUseCase
 import com.app.imagerandom.domain.usecase.theme.SetThemeUseCase
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -65,6 +68,16 @@ object AppModule {
         @ApplicationContext context: Context
     ): AppThemeRepository {
         return AppThemeRepositoryImpl(context)
+    }
+
+    @Provides
+    fun provideGetListImageRandomUseCase(imageRandomRepository: ImageRandomRepository): GetListImageRandomUseCase {
+        return GetListImageRandomUseCase(imageRandomRepository)
+    }
+
+    @Provides
+    fun provideImageRandomRepository(): ImageRandomRepository {
+        return ImageRandomRepositoryImpl()
     }
 
     @Provides
