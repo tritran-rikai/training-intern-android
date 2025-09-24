@@ -1,6 +1,7 @@
 package com.app.imagerandom.data.di
 
 import android.content.Context
+import com.app.imagerandom.data.network.ImageRandomApiService
 import com.app.imagerandom.data.repository.AppThemeRepository
 import com.app.imagerandom.data.repository.AppThemeRepositoryImpl
 import com.app.imagerandom.data.repository.ImageRandomRepository
@@ -31,22 +32,6 @@ object AppModule {
         return context
     }
 
-//    @Provides
-//    @Singleton
-//    fun provideRetrofit(): Retrofit {
-//        val interceptor = HttpLoggingInterceptor()
-//        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-//        val client = OkHttpClient.Builder()
-//            .addInterceptor(interceptor)
-//            .build()
-//
-//        return Retrofit.Builder()
-//            .baseUrl(AppConfig.FILE_HOST)
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .client(client)
-//            .build()
-//    }
-
     @Provides
     fun provideGson(): Gson = Gson()
 
@@ -76,8 +61,9 @@ object AppModule {
     }
 
     @Provides
-    fun provideImageRandomRepository(): ImageRandomRepository {
-        return ImageRandomRepositoryImpl()
+    @Singleton // Added Singleton
+    fun provideImageRandomRepository(apiService: ImageRandomApiService): ImageRandomRepository { // Added apiService parameter
+        return ImageRandomRepositoryImpl(apiService) // Pass apiService to constructor
     }
 
     @Provides
