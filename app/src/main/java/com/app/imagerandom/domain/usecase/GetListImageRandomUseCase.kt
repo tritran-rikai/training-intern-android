@@ -4,8 +4,7 @@ import com.app.imagerandom.data.repository.ImageRandomRepository
 import com.app.imagerandom.domain.model.ImageRandom
 
 class GetListImageRandomUseCase(private val repository: ImageRandomRepository) {
-    suspend operator fun invoke(): List<ImageRandom> {
-        return repository.getListImageRandom()
-
+    suspend operator fun invoke(page: Int, perPage: Int): List<ImageRandom> {
+        return repository.getListImageRandom(page = page, perPage = perPage)
     }
 }
