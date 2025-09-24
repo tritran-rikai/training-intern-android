@@ -1,0 +1,34 @@
+{
+  "modelName": "TE-I3",
+  "model": "i3",
+  "chip_type": "Airoha",
+  "has_anc_mode": true,
+  "has_sound_leak_mode": false,
+  "is_eq_custom_auto": true,
+  "need_check_fw_version": {
+    "force_update": false,
+    "information_dialog": false
+  },
+  "setting": {
+    "has_software_update": true,
+    "has_language_update": true,
+    "has_voice_changer": false,
+    "has_function_button": true,
+    "has_wearing_detection": false,
+    "has_3d_mode": false,
+    "has_gaming_mode": true
+  },
+  "sound_mode": {
+    "has_anc_level_slider": false,
+    "has_trans_level_slider": true,
+    "has_noise_canceling_switch": false
+  },
+  "function_button": {
+    "left_earbud": true,
+    "right_earbud": true,
+    "long_press": false,
+    "power_button": false,
+    "anc_button": false,
+    "toggle_anc": false
+  }
+}

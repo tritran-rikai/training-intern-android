@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 8.5.1" type="baseline" client="gradle" dependencies="false" name="AGP (8.5.1)" variant="fatal" version="8.5.1">
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `d01v_adk_sound_1` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/d01v_adk_sound_1&quot; android:state_selected=&quot;false&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/d01v_adk_sound_1.xml"
+            line="4"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `d01v_adk_sound_1` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/d01v_adk_sound_1&quot; android:state_selected=&quot;false&quot; />"
+        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/d01v_adk_sound_1.xml"
+            line="4"
+            column="11"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `d01v_adk_sound_2` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/d01v_adk_sound_2&quot; android:state_selected=&quot;false&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/d01v_adk_sound_2.xml"
+            line="4"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `d01v_adk_sound_2` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/d01v_adk_sound_2&quot; android:state_selected=&quot;false&quot; />"
+        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/d01v_adk_sound_2.xml"
+            line="4"
+            column="11"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `d01v_adk_sound_3` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/d01v_adk_sound_3&quot; android:state_selected=&quot;false&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/d01v_adk_sound_3.xml"
+            line="4"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `d01v_adk_sound_3` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/d01v_adk_sound_3&quot; android:state_selected=&quot;false&quot; />"
+        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/d01v_adk_sound_3.xml"
+            line="4"
+            column="11"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `d01v_jjq_sound_1` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/d01v_jjq_sound_1&quot; android:state_selected=&quot;true&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/d01v_jjq_sound_1.xml"
+            line="3"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `d01v_jjq_sound_1` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/d01v_jjq_sound_1&quot; android:state_selected=&quot;true&quot; />"
+        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/d01v_jjq_sound_1.xml"
+            line="3"
+            column="11"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `d01v_jjq_sound_2` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/d01v_jjq_sound_2&quot; android:state_selected=&quot;true&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/d01v_jjq_sound_2.xml"
+            line="3"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `d01v_jjq_sound_2` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/d01v_jjq_sound_2&quot; android:state_selected=&quot;true&quot; />"
+        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/d01v_jjq_sound_2.xml"
+            line="3"
+            column="11"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `d01v_jjq_sound_3` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/d01v_jjq_sound_3&quot; android:state_selected=&quot;true&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/d01v_jjq_sound_3.xml"
+            line="3"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `d01v_jjq_sound_3` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/d01v_jjq_sound_3&quot; android:state_selected=&quot;true&quot; />"
+        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/d01v_jjq_sound_3.xml"
+            line="3"
+            column="11"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `d01v_jjq_sound_4` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/d01v_jjq_sound_4&quot; android:state_selected=&quot;true&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/d01v_jjq_sound_4.xml"
+            line="3"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `d01v_jjq_sound_4` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/d01v_jjq_sound_4&quot; android:state_selected=&quot;true&quot; />"
+        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/d01v_jjq_sound_4.xml"
+            line="3"
+            column="11"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `d01v_jjq_sound_5` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/d01v_jjq_sound_5&quot; android:state_selected=&quot;true&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/d01v_jjq_sound_5.xml"
+            line="3"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `d01v_jjq_sound_5` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/d01v_jjq_sound_5&quot; android:state_selected=&quot;true&quot; />"
+        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/d01v_jjq_sound_5.xml"
+            line="3"
+            column="11"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `d01v_jjq_sound_6` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/d01v_jjq_sound_6&quot; android:state_selected=&quot;true&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/d01v_jjq_sound_6.xml"
+            line="3"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `d01v_jjq_sound_6` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/d01v_jjq_sound_6&quot; android:state_selected=&quot;true&quot; />"
+        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/d01v_jjq_sound_6.xml"
+            line="3"
+            column="11"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `d01v_jjq_sound_7` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/d01v_jjq_sound_7&quot; android:state_selected=&quot;true&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/d01v_jjq_sound_7.xml"
+            line="3"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `d01v_jjq_sound_7` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/d01v_jjq_sound_7&quot; android:state_selected=&quot;true&quot; />"
+        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/d01v_jjq_sound_7.xml"
+            line="3"
+            column="11"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `w1_pnk_sound_1` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/w1_pnk_sound_1&quot; android:state_selected=&quot;false&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/w1_pnk_sound_1.xml"
+            line="4"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `w1_pnk_sound_1` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/w1_pnk_sound_1&quot; android:state_selected=&quot;false&quot; />"
+        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/w1_pnk_sound_1.xml"
+            line="4"
+            column="11"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `w1_pnk_sound_2` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/w1_pnk_sound_2&quot; android:state_selected=&quot;false&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/w1_pnk_sound_2.xml"
+            line="4"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `w1_pnk_sound_2` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/w1_pnk_sound_2&quot; android:state_selected=&quot;false&quot; />"
+        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/w1_pnk_sound_2.xml"
+            line="4"
+            column="11"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `w1_pnk_sound_3` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/w1_pnk_sound_3&quot; android:state_selected=&quot;false&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/w1_pnk_sound_3.xml"
+            line="4"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `w1_pnk_sound_3` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/w1_pnk_sound_3&quot; android:state_selected=&quot;false&quot; />"
+        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/w1_pnk_sound_3.xml"
+            line="4"
+            column="11"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `w1_pnk_sound_4` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/w1_pnk_sound_4&quot; android:state_selected=&quot;false&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/w1_pnk_sound_4.xml"
+            line="4"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `w1_pnk_sound_4` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/w1_pnk_sound_4&quot; android:state_selected=&quot;false&quot; />"
+        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/w1_pnk_sound_4.xml"
+            line="4"
+            column="11"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `w1_pnk_sound_5` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/w1_pnk_sound_5&quot; android:state_selected=&quot;false&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/w1_pnk_sound_5.xml"
+            line="4"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ResourceCycle"
+        message="Drawable `w1_pnk_sound_5` should not reference itself"
+        errorLine1="    &lt;item android:drawable=&quot;@drawable/w1_pnk_sound_5&quot; android:state_selected=&quot;false&quot; />"
+        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/w1_pnk_sound_5.xml"
+            line="4"
+            column="11"/>
+    </issue>
+
+</issues>
