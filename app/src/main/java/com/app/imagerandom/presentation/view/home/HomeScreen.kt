@@ -1,5 +1,6 @@
 package com.app.imagerandom.presentation.view.home
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -36,19 +37,21 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import com.app.imagerandom.domain.model.ImageRandom
 import com.app.imagerandom.domain.model.Links
 import com.app.imagerandom.domain.model.Urls
+import com.app.imagerandom.presentation.view.imagedetail.navigation.navigateToImageDetail
 import com.app.imagerandom.presentation.viewmodel.theme.HomeViewModel
 
 const val HOME_ROUTE = "home_route"
 fun NavController.navigateToHome() = navigate(HOME_ROUTE) {
-    popUpTo(0) { inclusive = true }
+    popUpTo(graph.startDestinationId) { inclusive = true }
+    launchSingleTop = true
 }
 
-fun NavGraphBuilder.homeScreen(
-) {
+fun NavGraphBuilder.homeScreen(navController: NavController) { // Added NavController parameter
     composable(
         route = HOME_ROUTE,
     ) {
@@ -57,6 +60,7 @@ fun NavGraphBuilder.homeScreen(
         val isLoading by viewModel.isLoading.collectAsState()
         val allImagesLoaded by viewModel.allImagesLoaded.collectAsState()
         HomeScreen(
+            navController = navController, // Pass NavController
             list = list,
             isLoading = isLoading,
             allImagesLoaded = allImagesLoaded,
@@ -68,6 +72,7 @@ fun NavGraphBuilder.homeScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
+    navController: NavController, // Added NavController parameter
     list: List<ImageRandom>,
     isLoading: Boolean,
     allImagesLoaded: Boolean,
@@ -75,8 +80,7 @@ fun HomeScreen(
 ) {
     val gridState = rememberLazyStaggeredGridState()
 
-    // Automatically load more when near the end of the list
-    val buffer = 5 // Number of items from the end to start loading more
+    val buffer = 5
     val shouldLoadMore by remember {
         derivedStateOf {
             val lastVisibleItem = gridState.layoutInfo.visibleItemsInfo.lastOrNull()
@@ -128,7 +132,11 @@ fun HomeScreen(
                 ) {
                     items(list, key = { it.id }) { image ->
                         Card(
-                            modifier = Modifier.fillMaxWidth()
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable { // Make card clickable
+                                    navController.navigateToImageDetail(image.urls.full)
+                                }
                         ) {
                             AsyncImage(
                                 model = image.urls.full,
@@ -143,14 +151,17 @@ fun HomeScreen(
                 }
                 Spacer(modifier = Modifier.height(16.dp))
                 if (isLoading) {
-                    Box(modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp), contentAlignment = Alignment.Center) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 8.dp), contentAlignment = Alignment.Center
+                    ) {
                         CircularProgressIndicator()
                     }
                 }
                 if (allImagesLoaded && list.isNotEmpty()) {
                     Text("You've reached the end!", modifier = Modifier.padding(vertical = 8.dp))
                 }
-                // Show load more button only if not loading, not all loaded, and list is not empty
                 if (!isLoading && !allImagesLoaded && list.isNotEmpty()) {
                     Button(onClick = onLoadMoreClick) {
                         Text("Load More Images")
@@ -188,14 +199,24 @@ fun HomeScreenPreview() {
             links = Links("", "", "", "")
         )
     )
-    HomeScreen(list = sampleImages, isLoading = false, allImagesLoaded = false, onLoadMoreClick = {})
+    HomeScreen(
+        navController = rememberNavController(),
+        list = sampleImages,
+        isLoading = false,
+        allImagesLoaded = false,
+        onLoadMoreClick = {})
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview(showBackground = true, name = "Home Screen Empty")
 @Composable
 fun HomeScreenEmptyPreview() {
-    HomeScreen(list = emptyList(), isLoading = false, allImagesLoaded = false, onLoadMoreClick = {})
+    HomeScreen(
+        navController = rememberNavController(),
+        list = emptyList(),
+        isLoading = false,
+        allImagesLoaded = false,
+        onLoadMoreClick = {})
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -214,7 +235,12 @@ fun HomeScreenLoadingPreview() {
             links = Links("", "", "", "")
         )
     )
-    HomeScreen(list = sampleImages, isLoading = true, allImagesLoaded = false, onLoadMoreClick = {})
+    HomeScreen(
+        navController = rememberNavController(),
+        list = sampleImages,
+        isLoading = true,
+        allImagesLoaded = false,
+        onLoadMoreClick = {})
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -233,5 +259,10 @@ fun HomeScreenAllLoadedPreview() {
             links = Links("", "", "", "")
         )
     )
-    HomeScreen(list = sampleImages, isLoading = false, allImagesLoaded = true, onLoadMoreClick = {})
+    HomeScreen(
+        navController = rememberNavController(),
+        list = sampleImages,
+        isLoading = false,
+        allImagesLoaded = true,
+        onLoadMoreClick = {})
 }

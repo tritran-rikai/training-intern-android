@@ -7,6 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.app.imagerandom.domain.model.BottomTab
 import com.app.imagerandom.presentation.view.home.homeScreen
+import com.app.imagerandom.presentation.view.imagedetail.navigation.imageDetailScreen
 import com.app.imagerandom.presentation.view.like.likeScreen
 import com.app.imagerandom.presentation.view.setting.settingScreen
 
@@ -23,7 +24,8 @@ fun TabContentHost(
     NavHost(navController, startDestination = tab.route) {
         when (tab) {
             is BottomTab.Home -> {
-                homeScreen()
+                homeScreen(navController)
+                imageDetailScreen(navController)
             }
 
             is BottomTab.EqSetting -> {
