@@ -1,6 +1,6 @@
 package com.app.imagerandom.di
 
-import com.app.imagerandom.data.network.ImageRandomApiService
+import com.app.imagerandom.data.network.MovieApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,14 +15,14 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-    private const val BASE_URL = "https://api.unsplash.com/"
-    private const val UNSPLASH_ACCESS_KEY = "AOL3pLiMlF3khU3wmUqluy67092vEvIyrr02z85F3b0"
+    private const val BASE_URL = "https://api.themoviedb.org/3/"
+    private const val API_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYzYxMjE1YzdiZDEwZWY4YzUxOWQ0OGYxZjAzM2QwZCIsIm5iZiI6MTc0Nzc5OTkxMi44MDA5OTk5LCJzdWIiOiI2ODJkNGY2OGJkZDA3MTYzZGQyZjdjOWQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.-_VBCStmWn0jf4lJBDJRhCed-UmukU1z9eEQOw-2FZE"
 
     @Provides
     @Singleton
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY // Or Level.BASIC for less verbose logs
+            level = HttpLoggingInterceptor.Level.BODY
         }
     }
 
@@ -34,7 +34,8 @@ object NetworkModule {
             .addInterceptor { chain ->
                 val original = chain.request()
                 val requestBuilder = original.newBuilder()
-                    .header("Authorization", "Client-ID $UNSPLASH_ACCESS_KEY")
+                    .addHeader("accept", "application/json")
+                    .header("Authorization", "Bearer $API_KEY")
                 val request = requestBuilder.build()
                 chain.proceed(request)
             }
@@ -53,7 +54,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideImageRandomApiService(retrofit: Retrofit): ImageRandomApiService {
-        return retrofit.create(ImageRandomApiService::class.java)
+    fun provideImageRandomApiService(retrofit: Retrofit): MovieApiService {
+        return retrofit.create(MovieApiService::class.java)
     }
 }
