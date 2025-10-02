@@ -6,11 +6,14 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -18,19 +21,23 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.app.imagerandom.data.local.SharedPrefHelper
+import com.app.imagerandom.data.local.AppConst
+import com.app.imagerandom.domain.usecase.main.navigateToHome
 import com.app.imagerandom.presentation.navigation.Screen
 import com.app.imagerandom.presentation.ui.AppColors
+import com.app.imagerandom.presentation.viewmodel.AuthViewModel
 
 fun NavController.navigateToSignIn(username: String, password: String) {
     navigate("${Screen.SIGN_IN}?username=${username}&password=${password}") {
@@ -46,13 +53,16 @@ fun NavGraphBuilder.signInScreen(navController: NavController) {
             navArgument("password") { defaultValue = "" }
         )
     ) {
+        val viewModel = hiltViewModel<AuthViewModel>()
         val username = it.arguments?.getString("username") ?: ""
         val password = it.arguments?.getString("password") ?: ""
         SignInScreen(
             preFillUsername = username,
             preFillPassword = password,
-            onSignIn = {
-                navController.navigateToCreateSession()
+            onSignIn = { usernameInput, passwordInput ->
+                viewModel.startAuthFlow(usernameInput, passwordInput) {
+                    navController.navigateToHome()
+                }
             },
             navigateToSignUp = {
                 navController.navigateToSignUp()
@@ -63,13 +73,11 @@ fun NavGraphBuilder.signInScreen(navController: NavController) {
 
 @Composable
 fun SignInScreen(
-    onSignIn: () -> Unit,
+    onSignIn: (String, String) -> Unit,
     navigateToSignUp: () -> Unit,
     preFillUsername: String = "",
     preFillPassword: String = ""
 ) {
-    val context = LocalContext.current
-    val prefs = remember { SharedPrefHelper(context) }
     var username by remember { mutableStateOf(preFillUsername) }
     var password by remember { mutableStateOf(preFillPassword) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
@@ -83,11 +91,19 @@ fun SignInScreen(
         colors = listOf(AppColors.Secondary, AppColors.Primary)
     )
 
+    val focusManager = LocalFocusManager.current
+
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(gradientBackground)
-            .padding(24.dp),
+            .padding(24.dp)
+            .clickable(
+                indication = null,
+                interactionSource = remember { MutableInteractionSource() }
+            ) {
+                focusManager.clearFocus()
+            },
         contentAlignment = Alignment.Center
     ) {
         AnimatedVisibility(
@@ -139,8 +155,8 @@ fun SignInScreen(
                         label = { Text("Tên người dùng") },
                         singleLine = true,
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .clip(RoundedCornerShape(12.dp)),
+                            .fillMaxWidth(),
+                        shape = RoundedCornerShape(12.dp),
                         colors = TextFieldDefaults.colors(
                             focusedContainerColor = Color.White,
                             unfocusedContainerColor = Color.White,
@@ -160,8 +176,8 @@ fun SignInScreen(
                         visualTransformation = PasswordVisualTransformation(),
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .clip(RoundedCornerShape(12.dp)),
+                            .fillMaxWidth(),
+                        shape = RoundedCornerShape(12.dp),
                         colors = TextFieldDefaults.colors(
                             focusedContainerColor = Color.White,
                             unfocusedContainerColor = Color.White,
@@ -191,9 +207,8 @@ fun SignInScreen(
 
                     Button(
                         onClick = {
-                            val (savedUser, savedPass) = prefs.getUser()
-                            if (username == savedUser && password == savedPass) {
-                                onSignIn()
+                            if (username == AppConst.USERNAME && password == AppConst.PASSWORD) {
+                                onSignIn(username, password)
                             } else {
                                 errorMessage = "Sai tên người dùng hoặc mật khẩu"
                             }
@@ -218,11 +233,6 @@ fun SignInScreen(
                         horizontalArrangement = Arrangement.Center,
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        Text(
-                            text = "Chưa có tài khoản? ",
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = Color.Gray
-                        )
                         TextButton(onClick = navigateToSignUp) {
                             Text(
                                 text = "Đăng Ký",

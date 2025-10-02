@@ -14,9 +14,7 @@ interface MovieApiService {
 
     // Tao request token
     @GET("authentication/token/new")
-    suspend fun getRequestToken(
-        @Query("api_key") apiKey: String
-    ): RequestTokenResponse
+    suspend fun getRequestToken(): RequestTokenResponse
 
     // Xac thuc request token voi username va password
     @POST("authentication/token/validate_with_login")

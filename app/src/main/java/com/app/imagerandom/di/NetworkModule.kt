@@ -54,7 +54,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideImageRandomApiService(retrofit: Retrofit): MovieApiService {
+    fun provideMovieAppApiService(retrofit: Retrofit): MovieApiService {
         return retrofit.create(MovieApiService::class.java)
     }
 }

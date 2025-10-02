@@ -3,8 +3,8 @@ package com.app.imagerandom.domain.model
 import com.google.gson.annotations.SerializedName
 
 data class ValidateRequestTokenRequest(
-    val username: String = "test_account_tritx",
-    val password: String = "Abc@123",
+    @SerializedName("username") val username: String,
+    @SerializedName("password") val password: String,
     @SerializedName("request_token") val requestToken: String
 )
 

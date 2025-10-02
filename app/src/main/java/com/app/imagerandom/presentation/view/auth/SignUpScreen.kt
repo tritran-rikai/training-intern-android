@@ -201,11 +201,6 @@ fun SignUpScreen(
                         horizontalArrangement = Arrangement.Center,
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        Text(
-                            text = "Đã có tài khoản?",
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = Color.Gray
-                        )
                         TextButton(onClick = {
                             navigateToSignIn("", "")
                         }) {

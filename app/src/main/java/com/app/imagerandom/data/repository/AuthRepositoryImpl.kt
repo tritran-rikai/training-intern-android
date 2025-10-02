@@ -11,12 +11,16 @@ import javax.inject.Inject
 class AuthRepositoryImpl @Inject constructor(
     private val apiService: MovieApiService
 ) : AuthRepository {
-    override suspend fun getRequestToken(apiKey: String): RequestTokenResponse {
-        return apiService.getRequestToken(apiKey)
+    override suspend fun getRequestToken(): RequestTokenResponse {
+        return apiService.getRequestToken()
     }
 
-    override suspend fun validateRequestToken(requestToken: String): ValidateRequestTokenResponse {
-        val request = ValidateRequestTokenRequest(requestToken = requestToken)
+    override suspend fun validateRequestToken(username: String, password: String, requestToken: String): ValidateRequestTokenResponse {
+        val request = ValidateRequestTokenRequest(
+            username = username,
+            password = password,
+            requestToken = requestToken
+        )
         return apiService.validateRequestToken(request)
     }
 

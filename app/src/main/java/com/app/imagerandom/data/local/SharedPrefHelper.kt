@@ -3,8 +3,12 @@ package com.app.imagerandom.data.local
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.core.content.edit
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 
-class SharedPrefHelper(context: Context) {
+class SharedPrefHelper @Inject constructor(
+    @ApplicationContext context: Context
+) {
     private val prefs: SharedPreferences =
         context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
 
