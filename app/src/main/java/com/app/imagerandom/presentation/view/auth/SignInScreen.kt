@@ -54,7 +54,7 @@ fun NavGraphBuilder.signInScreen(navController: NavController) {
         val viewModel = hiltViewModel<AuthViewModel>()
         val username = it.arguments?.getString("username") ?: ""
         val password = it.arguments?.getString("password") ?: ""
-        val error = viewModel.error.observeAsState()
+        val error = viewModel.error.collectAsState()
         SignInScreen(
             preFillUsername = username,
             preFillPassword = password,
