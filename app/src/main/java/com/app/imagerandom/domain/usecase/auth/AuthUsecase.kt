@@ -6,11 +6,19 @@ import javax.inject.Inject
 class AuthUseCase @Inject constructor(
     private val repo: AuthRepository
 ) {
-    suspend fun getRequestToken() = repo.getRequestToken()
+    suspend fun startAuthFlow(username: String, password: String): String {
+        // Get request token
+        val requestToken = repo.getRequestToken().requestToken
 
-    suspend fun validateRequestToken(username: String, password: String, requestToken: String) =
-        repo.validateRequestToken(username, password, requestToken)
+        // Validate request token với user & pass
+        val validateResult = repo.validateRequestToken(username, password, requestToken)
+        if (!validateResult.isSuccess) {
+            throw Exception("Xác thực request token thất bại")
+        }
 
-    suspend fun createSessionToken(requestToken: String) =
-        repo.createSessionToken(requestToken)
+        // Create session token
+        val sessionResult = repo.createSessionToken(requestToken)
+        return sessionResult.sessionId
+    }
 }
+

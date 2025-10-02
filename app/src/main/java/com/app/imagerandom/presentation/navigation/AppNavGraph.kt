@@ -3,7 +3,7 @@ package com.app.imagerandom.presentation.navigation
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.app.imagerandom.domain.usecase.main.homeScreen
+import com.app.imagerandom.presentation.view.home.homeScreen
 import com.app.imagerandom.presentation.view.auth.signInScreen
 import com.app.imagerandom.presentation.view.auth.signUpScreen
 

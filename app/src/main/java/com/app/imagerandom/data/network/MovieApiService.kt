@@ -3,7 +3,6 @@ package com.app.imagerandom.data.network
 import com.app.imagerandom.domain.model.CreateSessionRequest
 import com.app.imagerandom.domain.model.CreateSessionResponse
 import retrofit2.http.GET
-import retrofit2.http.Query
 import com.app.imagerandom.domain.model.RequestTokenResponse
 import com.app.imagerandom.domain.model.ValidateRequestTokenRequest
 import com.app.imagerandom.domain.model.ValidateRequestTokenResponse

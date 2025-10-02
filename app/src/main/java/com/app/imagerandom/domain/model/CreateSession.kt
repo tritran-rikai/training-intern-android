@@ -22,3 +22,9 @@ data class CreateSessionResponse(
     @SerializedName("success") val isSuccess: String,
     @SerializedName("session_id") val sessionId: String
 )
+
+data class ApiErrorResponse(
+    @SerializedName("success") val success: Boolean,
+    @SerializedName("status_code") val statusCode: Int,
+    @SerializedName("status_message") val statusMessage: String?
+)

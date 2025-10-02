@@ -20,7 +20,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -33,8 +32,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.app.imagerandom.data.local.AppConst
-import com.app.imagerandom.domain.usecase.main.navigateToHome
+import com.app.imagerandom.presentation.view.home.navigateToHome
 import com.app.imagerandom.presentation.navigation.Screen
 import com.app.imagerandom.presentation.ui.AppColors
 import com.app.imagerandom.presentation.viewmodel.AuthViewModel
@@ -56,6 +54,7 @@ fun NavGraphBuilder.signInScreen(navController: NavController) {
         val viewModel = hiltViewModel<AuthViewModel>()
         val username = it.arguments?.getString("username") ?: ""
         val password = it.arguments?.getString("password") ?: ""
+        val error = viewModel.error.observeAsState()
         SignInScreen(
             preFillUsername = username,
             preFillPassword = password,
@@ -66,7 +65,8 @@ fun NavGraphBuilder.signInScreen(navController: NavController) {
             },
             navigateToSignUp = {
                 navController.navigateToSignUp()
-            }
+            },
+            error = error.value
         )
     }
 }
@@ -76,11 +76,11 @@ fun SignInScreen(
     onSignIn: (String, String) -> Unit,
     navigateToSignUp: () -> Unit,
     preFillUsername: String = "",
-    preFillPassword: String = ""
+    preFillPassword: String = "",
+    error: String? = null
 ) {
     var username by remember { mutableStateOf(preFillUsername) }
     var password by remember { mutableStateOf(preFillPassword) }
-    var errorMessage by remember { mutableStateOf<String?>(null) }
     var isVisible by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
@@ -190,28 +190,22 @@ fun SignInScreen(
                     )
 
                     AnimatedVisibility(
-                        visible = errorMessage != null,
+                        visible = error != null,
                         enter = fadeIn(),
                         exit = fadeOut()
                     ) {
-                        errorMessage?.let {
+                        error?.let {
                             Text(
                                 text = it,
                                 color = MaterialTheme.colorScheme.error,
-                                style = MaterialTheme.typography.bodyMedium,
-                                textAlign = TextAlign.Center,
-                                modifier = Modifier.fillMaxWidth()
+                                style = MaterialTheme.typography.bodyMedium
                             )
                         }
                     }
 
                     Button(
                         onClick = {
-                            if (username == AppConst.USERNAME && password == AppConst.PASSWORD) {
-                                onSignIn(username, password)
-                            } else {
-                                errorMessage = "Sai tên người dùng hoặc mật khẩu"
-                            }
+                            onSignIn(username, password)
                         },
                         modifier = Modifier
                             .fillMaxWidth()
